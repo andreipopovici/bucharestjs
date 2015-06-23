@@ -1,0 +1,47 @@
+<head>
+  <title>bucharestjs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	{{> header title="The Button" }}
+	{{> timer }}
+	{{> thebutton }}
+	{{> leaders }}
+</body>
+
+<template name="header">
+  <div class="header">
+    <h1>{{ title }}</h1>
+    {{> loginButtons align="right"}}
+  </div>
+</template>
+
+<template name="timer">
+	<div class="timer">
+	  	<span class="s">{{s}}</span>
+	</div>
+</template>
+
+<template name="thebutton">
+	{{# if loggedIn }}
+		<div class="thebutton">
+			<button disabled={{ didClick }}>{{ pushedAt }}</button>
+		</div>
+	{{ else }}
+		<span>Please login to push the button</span>
+	{{/ if }}
+</template>
+
+<template name="leaders">
+  <div class="leaders">
+  	<ol>
+  		{{# each clickers }}
+  		<li>
+  			<span class="username">{{ username }}</span>
+  			<span class="time">{{ time }}</span>
+		</li>
+		{{/each}}
+  	</ol>
+  </div>
+</template>
